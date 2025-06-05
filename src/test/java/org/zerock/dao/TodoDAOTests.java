@@ -14,6 +14,8 @@ import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 public class TodoDAOTests {
 
     private TodoDAO todoDAO;
@@ -29,19 +31,24 @@ public class TodoDAOTests {
         System.out.println("### Current Tiem = " + todoDAO.getTime() );
 
     }
+    /**
+     * getTime2 메서드 테스트
+     * @throws Exception
+     */
 
-    public String getTime2() throws Exception {
+    @Test
+    public void testgetTime2() throws Exception {
+        // getTime2 메서드 호출 결과 가져오기
+        String timeResult = todoDAO.getTime2();
 
-        @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
-        @Cleanup PreparedStatement preparedStatement = connection.prepareStatement("select now()");
-        @Cleanup ResultSet resultSet = preparedStatement.executeQuery();
+        // 결과 출력
+        System.out.println("### Current Time = " + timeResult);
 
-        //반드시 한번은 next( )
-        resultSet.next();
+        // 결과가 null이 아닌지 확인 (선택적)
+        assertNotNull(timeResult);
 
-        String now = resultSet.getString(1);
-
-        return now;
+        // 또는 결과가 현재 날짜/시간 형식인지 확인 (선택적)
+        // 예: assertThat(timeResult).matches("\\d{4}-\\d{2}-\\d{2}.*");
     }
 
     @Test
