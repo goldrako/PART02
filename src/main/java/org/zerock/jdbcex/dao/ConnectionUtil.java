@@ -24,7 +24,7 @@ public enum ConnectionUtil {
         ds = new HikariDataSource(config);
     }
 
-    public Connection getConnection()throws Exception {
+    public Connection getConnection() throws Exception {
         return ds.getConnection();
     }
 

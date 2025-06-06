@@ -58,7 +58,7 @@ public class TodoDAO {
 
     }
 
-    public List<TodoVO> selectAll()throws Exception  {
+    public List<TodoVO> selectAll() throws Exception  {
 
         String sql = "select * from tbl_todo";
 
@@ -83,7 +83,7 @@ public class TodoDAO {
         return list;
     }
 
-    public TodoVO selectOne(Long tno)throws Exception {
+    public TodoVO selectOne(Long tno) throws Exception {
 
         String sql = "select * from tbl_todo where tno = ?";
 
@@ -118,7 +118,7 @@ public class TodoDAO {
         preparedStatement.executeUpdate();
     }
 
-    public void updateOne(TodoVO todoVO)throws Exception{
+    public void updateOne(TodoVO todoVO) throws Exception{
 
         String sql = "update tbl_todo set title =?, dueDate = ?, finished = ? where tno =?";
 
